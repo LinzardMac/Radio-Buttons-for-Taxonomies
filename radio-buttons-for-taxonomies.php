@@ -354,8 +354,15 @@ class Radio_Buttons_For_Taxonomies {
 					
 					return apply_filters( 'radio_buttons_for_taxonomies_no_term_' . $taxonomy, ! $has_default );
 
-			    },
-			)
+			        },
+			        'schema' => array(
+			            'description' => __( 'Taxonomy radio no term.' ), // description of the data in this field
+			            'type'        => 'bool', // used for validation/sanitization in API response
+			            'context'       =>   array( 'view', 'edit' ) // use 'view' to allow read only via the API 
+					                                 // use 'edit' to allow editing caps via the API
+					                                 // use 'embed' to allow this content to be embeded as a _link in other content 
+			        ),
+			),
 		);
 	}
 
